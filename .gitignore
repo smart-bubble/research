@@ -56,5 +56,5 @@ Thumbs.db
 src/app/homepage/pages/**/*.html
 
 #custom enviroment
-nestjs-check-mqtt/enviroments/development.env
-nestjs-check-mqtt/enviroments/production.env
+**/development.env
+**/production.env
