@@ -7,6 +7,12 @@ async function bootstrap() {
     AppModule,
     {
       transport: Transport.MQTT,
+      options: {
+        hostname: process.env.MQTT_HOST,
+        port: Number(process.env.MQTT_PORT),
+        username: process.env.MQTT_USERNAME,
+        password: process.env.MQTT_PASSWORD
+      },
     },
   );
   app.listen(() => console.log('Microservice is listening'));
