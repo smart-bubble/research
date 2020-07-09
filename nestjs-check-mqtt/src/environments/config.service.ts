@@ -8,10 +8,14 @@ export class ConfigService {
     this.envConfig = dotenv.parse(
       fs.readFileSync(`src/environments/${filePath}.env`),
     );
+    const tempsave = process.env.NODE_ENV
+    for (const k in this.envConfig) {
+      process.env[k] = this.envConfig[k]
+    }
+    process.env.NODE_ENV = tempsave;
   }
 
   get(key: string): string {
     return this.envConfig[key];
   }
 }
-export const configService = new ConfigService(process.env.NODE_ENV);

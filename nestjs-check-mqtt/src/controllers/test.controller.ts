@@ -1,10 +1,11 @@
 import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { MessagePattern, MqttContext, Ctx, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class TestController {
-  @MessagePattern("mqtttest")
-  Consoletest(data: string) {
+  @MessagePattern("mqtttest/#")
+  Consoletest(@Payload() data: string, @Ctx() context: MqttContext) {
     console.log(data);
+    console.log(context.getTopic());
   }
 }
